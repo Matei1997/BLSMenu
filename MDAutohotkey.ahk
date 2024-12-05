@@ -1,4 +1,4 @@
-﻿#NoEnv
+#NoEnv
 SetKeyDelay, 1
 SetWorkingDir %A_ScriptDir%
 #SingleInstance Force
@@ -16,69 +16,68 @@ if (Debugging_Value = "True") {
 BLSMenu:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, SceneMenu, Add, Grab BLS Kit, GrabBLS
-	Menu, SceneMenu, Add, Initial BLS, InitialBLS
+	Menu, SceneMenu, Add, Grab BLS Kit, GrabBLSHandler
+	Menu, SceneMenu, Add, Initial BLS, InitialBLSHandler
 	Menu, FullMenu, Add, InitialBLS, :SceneMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, BruisesMenu, Add, Treat Bruises, TreatBruises
+	Menu, BruisesMenu, Add, Treat Bruises, TreatBruisesHandler
 	Menu, FullMenu, Add, Bruises, :BruisesMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, SprainsMenu, Add, Treat Sprains, TreatSprains
+	Menu, SprainsMenu, Add, Treat Sprains, TreatSprainsHandler
 	Menu, RPMenu, Add, Sprains treatment, :SprainsMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, BurnsMenu, Add, First Second Degree, Burns,FirstSecondDegreeBurns
-	Menu, BurnsMenu, Add, Third Degree Burns, ThirdDegreeBurns
+	Menu, BurnsMenu, Add, First Second Degree, FirstSecondDegreeBurnsHandler
+	Menu, BurnsMenu, Add, Third Degree Burns, ThirdDegreeBurnsHandler
 	Menu, FullMenu, Add, Burns, :BurnsMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, CutsMenu, Add, Treat cuts, Treatcuts
+	Menu, CutsMenu, Add, Treat cuts, TreatcutsHandler
 	Menu, FullMenu, Add, Cuts, :CutsMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, GSWMenu, Add, GSW Leg Arm, GSWLegArm
-	Menu, GSWMenu, Add, GSW Chest, GSWChest
-	Menu, GSWMenu, Add, GSW Abdomen, GSWAbdomen
-	Menu, GSWMenu, Add, GSW Other, GSWOther
+	Menu, GSWMenu, Add, GSW Leg Arm, GSWLegArmHandler
+	Menu, GSWMenu, Add, GSW Chest, GSWChestHandler
+	Menu, GSWMenu, Add, GSW Abdomen, GSWAbdomenHandler
+	Menu, GSWMenu, Add, GSW Other, GSWOtherHandler
 	Menu, FullMenu, Add, GSW, :GSWMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, FracturesMenu, Add, Broken Leg, BrokenLeg
-	Menu, FracturesMenu, Add, Broken Arm, BrokenArm
-	Menu, FracturesMenu, Add, Broken Fingers, BrokenFingers
-	Menu, FracturesMenu, Add, Broken Toes, BrokenToes
-	Menu, FracturesMenu, Add, Broken Ribs, BrokenRibs
+	Menu, FracturesMenu, Add, Broken Leg, BrokenLegHandler
+	Menu, FracturesMenu, Add, Broken Arm, BrokenArmHandler
+	Menu, FracturesMenu, Add, Broken Fingers, BrokenFingersHandler
+	Menu, FracturesMenu, Add, Broken Toes, BrokenToesHandler
+	Menu, FracturesMenu, Add, Broken Ribs, BrokenRibsHandler
 	Menu, FullMenu, Add, Fractures, :FracturesMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, AnaphylaxisMenu, Add, Treat Anaphylaxis, TreatAnaphylaxis
+	Menu, AnaphylaxisMenu, Add, Treat Anaphylaxis, TreatAnaphylaxisHandler
 	Menu, FullMenu, Add, Anaphylaxis, :AnaphylaxisMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, HeimlichMenu, Add, Heimlich maneuver, HeimlichManeuver
+	Menu, HeimlichMenu, Add, Heimlich maneuver, HeimlichManeuverHandler
 	Menu, FullMenu, Add, Heimlich, :HeimlichMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, TourniquetMenu, Add, Use Tourniquete, UseTourniquete
+	Menu, TourniquetMenu, Add, Use Tourniquete, UseTourniquetHandler
 	Menu, FullMenu, Add, Use Tourniquete, :TourniquetMenu
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-	Menu, EndOfBLSMenu, Add, Finish BLS, FinishBLS
+	Menu, EndOfBLSMenu, Add, Finish BLS, FinishBLSHandler
 	Menu, FullMenu, Add, Finish BLS, :EndOfBLSMenu
 
-	Menu, FullMenu, Add, BLS, :FullBLSMenu
 
 	Menu, FullMenu, Add, Exit application, ExitApplication
 
@@ -88,7 +87,7 @@ return
 
 ;GetBLS handlers
 
-GrabBLS:
+GrabBLSHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow grabs a BLS kit from inside the bag", True)
 	Sleep 250
@@ -97,7 +96,7 @@ return
 
 ;Inspecting handlers
 
-InitialBLS:
+InitialBLSHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/anim medic", True)
 	Sleep 250
@@ -108,7 +107,7 @@ return
 
 ;Bruises handlers
 
-TreatBruises:
+TreatBruisesHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes an ice pack from the BLS kit and pushes in the middle of the ice pack until he hears a crack to activate it", True)
 	Sleep 450
@@ -121,7 +120,7 @@ return
 
 ;Sprains handlers
 
-TreatSprains:
+TreatSprainsHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes an ice pack from the BLS kit and pushes in the middle of the ice pack until he hears a crack to activate it", True)
 	Sleep 450
@@ -134,7 +133,7 @@ return
 
 ;Burns handlers
 
-FirstSecondDegreeBurns:
+FirstSecondDegreeBurnsHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Would remove any clothing and jewelry from on and around the burned area", True)
 	Sleep 450
@@ -145,7 +144,7 @@ FirstSecondDegreeBurns:
 	Paste("/melow Removes the wet gauze and wraps the burn", True)
 return
 
-ThirdDegreeBurns:
+ThirdDegreeBurnsHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Would remove any clothing and jewelry from on and around the burned area", True)
 	Sleep 450
@@ -156,7 +155,7 @@ return
 
 ;Cuts handlers
 
-Treatcuts:
+TreatcutsHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes saline gauze pads and burn dressing from the BLS kit", True)
 	Sleep 450
@@ -171,7 +170,7 @@ return
 
 ;GSW handlers
 
-GSWLegArm:
+GSWLegArmHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes multiple gauze pads, rolled gauze and medical tape from the BLS kit", True)
 	Sleep 450
@@ -182,7 +181,7 @@ GSWLegArm:
 	Paste("/dolow Would the bleeding stop?", True)
 return
 
-GSWChest:
+GSWChestHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes multiple hemostatic gauze pads and pressure bandage from the BLS kit", True)
 	Sleep 450
@@ -193,7 +192,7 @@ GSWChest:
 	Paste("/dolow Would the bleeding stop?", True)
 return
 
-GSWAbdomen:
+GSWAbdomenHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes multiple hemostatic gauze pads and pressure bandage from the BLS kit", True)
 	Sleep 450
@@ -204,7 +203,7 @@ GSWAbdomen:
 	Paste("/dolow Would the bleeding stop?", True)
 return
 
-GSWOther:
+GSWOtherHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes multiple gauze pads, rolled gauze and medical tape from the BLS kit", True)
 	Sleep 450
@@ -217,7 +216,7 @@ return
 
 ;Broken Bones handlers
 
-BrokenLeg:
+BrokenLegHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes splints and rolled gauze from the BLS kit", True)
 	Sleep 450
@@ -236,7 +235,7 @@ BrokenLeg:
 	Paste("/melow Would wrap the area around with a bandage and secure it with medical tape for support", True)
 return
 
-BrokenArm:
+BrokenArmHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes splint, sling and rolled gauze from the BLS kit", True)
 	Sleep 450
@@ -253,7 +252,7 @@ BrokenArm:
 	Paste("/melow Would rest the arm in a sling for support", True)
 return
 
-BrokenFingers:
+BrokenFingersHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes medical tape from the BLS kit", True)
 	Sleep 450
@@ -266,7 +265,7 @@ BrokenFingers:
 	Paste("/melow Places the ice pack on the finger", True)
 return
 
-BrokenToes:
+BrokenToesHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes medical tape from the BLS kit", True)
 	Sleep 450
@@ -279,7 +278,7 @@ BrokenToes:
 	Paste("/melow Places the ice pack on the toe", True)
 return
 
-BrokenRibs:
+BrokenRibsHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes two ice packs from the BLS kit and pushes in the middle of the ice packs until he hears a crack to activate them", True)
 	Sleep 450
@@ -294,7 +293,7 @@ return
 
 ;Anaphylaxis handlers
 
-AnaphylaxisMenu:
+TreatAnaphylaxisHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes an EpiPen from the BLS kit", True)
 	Sleep 450
@@ -307,7 +306,7 @@ return
 
 ;Heimlich handlers
 
-HeimlichMenu:
+HeimlichManeuverHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Stands behind the individual, places one foot slightly in front of the other for balance, and wraps his arms around the individual's waist while also tipping them forward slightly", True)
 	Sleep 450
@@ -320,7 +319,7 @@ return
 
 ;Tourniquet handlers
 
-TourniquetMenu:
+UseTourniquetHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/melow Takes tourniquet from the BLS kit", True)
 	Sleep 450
@@ -335,7 +334,7 @@ TourniquetMenu:
 	Paste("/melow Notes down the time the tourniquet was applied it with a pen", True)
 return
 
-EndOfBLSMenu:
+FinishBLSHandler:
 	WinActivate, ahk_exe %Application%
 	Paste("/dolow Would there be any other injuries? If so, what would they be?", True)
 return
@@ -457,5 +456,3 @@ Paste(ClipIt, Ent)
 	send, {lctrl up}
 	return
 }
-
-
